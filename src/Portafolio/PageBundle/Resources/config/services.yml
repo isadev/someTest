@@ -1,0 +1,4 @@
+services:
+#    portafolio_page.example:
+#        class: Portafolio\PageBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
