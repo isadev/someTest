@@ -1,9 +1,0 @@
-services:
-#    portafolio_page.example:
-#        class: Portafolio\PageBundle\Example
-#        arguments:
-
-services:
-    templating.engine.pug:
-        class: Pug\PugSymfonyEngine
-        arguments: ["@kernel"]
