@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>portafolio</title>{% block stylesheets %}
+    {% stylesheets 'bundles/portafoliopage/css/main.css' filter='cssrewrite' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+    {% endblock %}
+  </head>
+  <body> 
+    <header>
+      <ul>
+        <li>Inicio</li>
+        <li>Conoceme</li>
+        <li>Trabajos</li>
+        <li>Tecnologías</li>
+      </ul>
+    </header>
+    <aside class="center_content"> </aside>
+    <footer></footer>
+  </body>
+</html>

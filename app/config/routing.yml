@@ -1,0 +1,7 @@
+app_page:
+    resource: "@AppBundle/Controller/DefaultController.php"
+    prefix: /a
+
+portafolio_page:
+    resource: "@PortafolioPageBundle/Resources/config/routing.yml"
+    prefix:   /
