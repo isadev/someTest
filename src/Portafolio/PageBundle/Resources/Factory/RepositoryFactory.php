@@ -9,7 +9,7 @@
 namespace Portafolio\PageBundle\Resources\Factory;
 
 
-class RepositoryFactory
+class RepositoryFactory implements IRepositoryFactory
 {
     private $em;
 
