@@ -6,3 +6,6 @@ services:
     list_repositories:
         class: Portafolio\PageBundle\Resources\Factory\RepositoryFactory
         arguments: ["@doctrine"]
+    command_handler_connected:
+        class: Portafolio\PageBundle\Service\CommandHandlerConnected
+        arguments: ["@service_container", "@list_repositories"]
