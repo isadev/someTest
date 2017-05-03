@@ -1,0 +1,38 @@
+Portafolio\PageBundle\Entity\users:
+    type: entity
+    table: users
+    repositoryClass: Portafolio\PageBundle\Repository\usersRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+            nullable: true
+        lastName:
+            type: string
+            length: 255
+            column: last_name
+        address:
+            type: string
+            length: 255
+        identityCard:
+            type: integer
+            column: identity_card
+        nacionality:
+            type: string
+            length: 5
+        email:
+            type: string
+            length: 255
+        active:
+            type: string
+            length: 255
+        role:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }
