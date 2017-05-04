@@ -11,11 +11,11 @@ namespace Portafolio\PageBundle\Resources\Factory;
 
 class RepositoryFactory implements IRepositoryFactory
 {
-    private $em;
+    private $entityManager;
 
-    public function __construct($args)
+    public function __construct($doctrine)
     {
-        $this->em = $args->getManager();
+        $this->entityManager = $doctrine->getManager();
     }
 
     public function getRepository($name)
@@ -36,6 +36,6 @@ class RepositoryFactory implements IRepositoryFactory
 
         if (is_null($position))
             return null;
-        return $this->em->getRepository($repositories[$position]['repositoryLocation']);
+        return $this->entityManager->getRepository($repositories[$position]['repositoryLocation']);
     }
 }

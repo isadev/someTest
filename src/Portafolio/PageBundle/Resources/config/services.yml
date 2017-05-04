@@ -1,11 +1,15 @@
+parameters:
+    repository.factory: Portafolio\PageBundle\Resources\Factory\RepositoryFactory
+    command.handler.conection: Portafolio\PageBundle\Service\CommandHandlerConnected
+
 services:
 #    portafolio_page.example:
 #        class: Portafolio\PageBundle\Example
 #        arguments: ["@service_id", "plain_value", "%parameter%"]
 
-    list_repositories:
-        class: Portafolio\PageBundle\Resources\Factory\RepositoryFactory
+    repositories:
+        class: %repository.factory%
         arguments: ["@doctrine"]
-    command_handler_connected:
-        class: Portafolio\PageBundle\Service\CommandHandlerConnected
-        arguments: ["@service_container", "@list_repositories"]
+    bus.request:
+        class: %command.handler.conection%
+        arguments: ["@service_container", "@repositories"]

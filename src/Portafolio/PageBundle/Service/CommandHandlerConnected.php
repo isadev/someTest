@@ -11,17 +11,31 @@ namespace Portafolio\PageBundle\Service;
 use Portafolio\PageBundle\Command\Command;
 use Portafolio\PageBundle\Resources\Factory\RepositoryFactory;
 
+/**
+ * Class CommandHandlerConnected
+ * @package Portafolio\PageBundle\Service
+ */
 class CommandHandlerConnected
 {
     private $container;
     private $rf;
 
-    public function __construct($args,RepositoryFactory $rf)
+    public function __construct($container,RepositoryFactory $rf)
     {
-        $this->container = $args;
+        $this->container = $container;
         $this->rf = $rf;
     }
 
+    /**
+     * Metodo encargado de tomar el command y enviarle la informacion al handler
+     * para su posterior manipulacion
+     *
+     * @param Command $command
+     * @return mixed
+     * @throws \Exception
+     * @author Isabel Nieto
+     * @version 04/05/2017
+     */
     public function execute(Command $command)
     {
         // Separamos el namespace de donde viene la clase del command
