@@ -9,10 +9,7 @@
 namespace Portafolio\PageBundle\Service;
 
 use Portafolio\PageBundle\Command\Command;
-use Portafolio\PageBundle\Command\Handler;
 use Portafolio\PageBundle\Resources\Factory\RepositoryFactory;
-use Portafolio\PageBundle\UseCase\CreateUser\CreateUserHandler;
-
 
 class CommandHandlerConnected
 {
@@ -27,35 +24,29 @@ class CommandHandlerConnected
 
     public function execute(Command $command)
     {
-        // Separamos el nombre de la clase del command
-        $commandClassName = explode("\\", get_class($command));
-        $lengthCommand = count($commandClassName);
+        // Separamos el namespace de donde viene la clase del command
+        $commandNamespace = explode("\\", get_class($command));
+        $lengthCommand = count($commandNamespace);
 
-        $name = $commandClassName[$lengthCommand - 1];
-        $handlerName = preg_replace("/Command/", "Handler", $name);
+        $commandName = $commandNamespace[$lengthCommand - 1];
+        $handlerName = preg_replace("/Command/", "Handler", $commandName);
 
-        // Creamos la ruta para el nombre del handler
+        // Creamos la namespace para ubicar la ruta del handler
         $handlerClassName = "";
         for ($ii = 0; $ii < $lengthCommand - 1; $ii++)
-            $handlerClassName = $handlerClassName . $commandClassName[$ii] . "\\";
+            $handlerClassName = $handlerClassName . $commandNamespace[$ii] . "\\";
         $handlerClassName = $handlerClassName . $handlerName;
 
-//        $a = new CreateUserHandler();
-//        return $a->execute($this->rf, $command);
-
-//        $a = $this->container->getParameterBag();
-
-//        require_once($handlerClassName.'.php');
-        if(class_exists($handlerClassName, true)) {
-            $a = new $handlerName;
-            return $a->execute($this->rf, $command);
+        // Si la clase existe procedemos con el resto del trabajo que ejecuta el handler
+        try {
+            if (class_exists($handlerClassName, true)) {
+                $reflectedClass = new \ReflectionClass($handlerClassName);
+                $handler = $reflectedClass->newInstance();
+                return $handler->execute($this->rf, $command);
+            }
         }
-
-        return [
-            class_exists(get_class($command)),
-            class_exists($handlerClassName),
-
-//            "command" => $name, "handler" => $handlerName, "container" => get_class_methods($this->container)
-];
+        catch (\Exception $e) {
+            throw new \Exception($e->getFile(). "\\n".$e->getMessage(). "\\n". $e->getLine(), 500);
+        }
     }
 }
