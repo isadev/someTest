@@ -14,7 +14,7 @@ class CreateUserCommand implements Command
 {
     protected $name;
 
-    public function __construct($data)
+    public function __construct($data = null)
     {
         $this->name = $data['name'];
     }

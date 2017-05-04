@@ -1,3 +1,9 @@
 portafolio_page_homepage:
     path:     /
     defaults: { _controller: PortafolioPageBundle:Default:index }
+
+create_user:
+    path: /create
+    defaults: { _controller: PortafolioPageBundle:Default:createUsers}
+    options:
+        expose: true

@@ -25,8 +25,8 @@ class CreateUserHandler implements Handler
      */
     public function execute(RepositoryFactory $repositoryFactory, Command $command)
     {
-        return $command->getRequest();
-//        $list = $repositoryFactory->getRepository('users');
-//        return count($list->findAll());
+//        return $command->getRequest();
+        $list = $repositoryFactory->getRepository('users');
+        return count($list->findAll());
     }
 }
