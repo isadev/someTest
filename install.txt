@@ -2,9 +2,11 @@
 2.- Configurar el archivo parameters.yml dentro de la carpeta 
 	app->config->parameters.yml
 		cambiar los valores de la base de datos por la que se desee
-3.- Correr las migraciones
+3.- Correr composer
+    composer install
+4.- Correr las migraciones
 	bin:console d:m:m
-4.- Ir al navegador para crear usuarios
+5.- Ir al navegador para crear usuarios
 	localhost/app_dev.php/create
-5.- Ir al navegador para consultar lo ingresado
+6.- Ir al navegador para consultar lo ingresado
 	localhost/app_dev.php/
