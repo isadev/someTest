@@ -4,10 +4,10 @@ namespace Portafolio\PageBundle\Controller;
 
 
 use Portafolio\PageBundle\Entity\users;
-use Portafolio\PageBundle\UseCase\CreateUser\CreateUserCommand;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Portafolio\PageBundle\Service\ApplyCommand;
 
 class DefaultController extends Controller
 {
@@ -33,8 +33,8 @@ class DefaultController extends Controller
 
     public function indexAction()
     {
-        $command = new CreateUserCommand();
-        $response = $this->container->get('bus.request')->execute($command);
+        $command = new ApplyCommand("CreateUser");
+        $response = $this->container->get('bus.request')->execute($command->setData(["name"=>123]));
 
         return $this->render('PortafolioPageBundle:Default:index.html.twig',['data' => $response, 'otro' => 'blablabla']);
     }
