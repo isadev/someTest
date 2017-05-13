@@ -12,9 +12,11 @@ use Symfony\Component\Finder\Finder;
 /**
  * Clase para el manejo de los comando dentro de la carpeta UseCase.
  * 
- * Isa Te Quiero
+ * Isa Te Sigo Quiero
  *
  * Class ApplyCommand
+
+ * @author Joel D. Requena P. <Joel.2005.2@gmail.com>
  * @package Portafolio\PageBundle\Service
  */
 class ApplyCommand
