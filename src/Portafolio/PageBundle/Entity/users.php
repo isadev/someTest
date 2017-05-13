@@ -52,11 +52,16 @@ class users
      */
     private $role;
 
-    public function __construct()
+    public function __construct($data = null)
     {
         $this->active = false;
         $this->role = "client";
         $this->nacionality = "V";
+        $this->name = isset($data['name']) ? $data['name'] : "nombre1";
+        $this->email = isset($data["email"]) ? $data["email"] : "blablabla@blebleble.com";
+        $this->lastName = isset($data["last_name"]) ? $data["last_name"] : "blobloblo";
+        $this->identityCard = isset($data["identity_card"]) ? $data["identity_card"] : 123456;
+        $this->address = isset($data["address"]) ? $data["address"] : "blablabla";
     }
 
     /**
