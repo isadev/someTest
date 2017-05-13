@@ -39,11 +39,13 @@ class ApplyCommand
 
     /**
      * Construct
-     */ 
-	public function __construct($useCaseName = null, $nameAction = null)
+     * @param null $useCaseName
+     * @param null $actionName
+     */
+	public function __construct($useCaseName = null, $actionName = null)
     {
         $this->useCaseName = $useCaseName;
-        $this->command = $this->commandSearch($nameAction);
+        $this->command = $this->commandSearch($actionName);
     }
 
     /**
