@@ -9,8 +9,10 @@
 namespace Portafolio\PageBundle\UseCase\CreateUser;
 
 use Portafolio\PageBundle\Command\Command;
+use Portafolio\PageBundle\Entity\users;
 use Portafolio\PageBundle\Resources\Factory\IRepositoryFactory;
 use Portafolio\PageBundle\Command\Handler;
+use Portafolio\PageBundle\Service\ResponseHandler;
 
 class CreateUserHandler implements Handler
 {
@@ -25,8 +27,14 @@ class CreateUserHandler implements Handler
      */
     public function execute(IRepositoryFactory $repositoryFactory, Command $command)
     {
-//        return $command->getRequest();
+        $request = $command->getRequest();
+
         $list = $repositoryFactory->getRepository('users');
-        return count($list->findAll());
+
+        $user = new users($request);
+
+        $list->saveObj($user);
+
+        return new ResponseHandler(200, 'OK');
     }
 }

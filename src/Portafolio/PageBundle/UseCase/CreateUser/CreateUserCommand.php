@@ -9,20 +9,8 @@
 namespace Portafolio\PageBundle\UseCase\CreateUser;
 
 use Portafolio\PageBundle\Command\Command;
+use Portafolio\PageBundle\Service\CommandBase;
 
-class CreateUserCommand implements Command
+class CreateUserCommand extends CommandBase
 {
-    protected $name;
-
-    public function __construct($data = null)
-    {
-        $this->name = $data['name'];
-    }
-
-    public function getRequest()
-    {
-        return [
-            'name' => $this->name
-        ];
-    }
 }
