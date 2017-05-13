@@ -9,7 +9,6 @@
 namespace Portafolio\PageBundle\Service;
 
 use Portafolio\PageBundle\Command\Command;
-use Portafolio\PageBundle\Resources\Factory\RepositoryFactory;
 
 /**
  * Class CommandHandlerConnected
@@ -20,7 +19,7 @@ class CommandHandlerConnected
     private $container;
     private $rf;
 
-    public function __construct($container,RepositoryFactory $rf)
+    public function __construct($container, $rf)
     {
         $this->container = $container;
         $this->rf = $rf;

@@ -8,6 +8,7 @@
 
 namespace Portafolio\PageBundle\Command;
 
+use Portafolio\PageBundle\Resources\Factory\IRepositoryFactory;
 use Portafolio\PageBundle\Resources\Factory\RepositoryFactory;
 
 interface Handler
@@ -21,5 +22,5 @@ interface Handler
      * @author Isabel Nieto <isabelcnd@gmail.com>
      * @version 03/05/2017
      */
-    public function execute(RepositoryFactory $repositoryFactory, Command $command);
+    public function execute(IRepositoryFactory $repositoryFactory, Command $command);
 }
