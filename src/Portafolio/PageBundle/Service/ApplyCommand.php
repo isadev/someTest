@@ -52,6 +52,7 @@ class ApplyCommand
         
         //Explorando la carpeta en busca de sus archivos.
 		foreach ($finder->files()->in($dir) as $file) {
+
             // Tomando en cuenta solo archivos de tipo Command
 			if (strpos(basename($file->getRealPath()), "Command.php")) {
                 // Optimización y refactorizacion del Path de los comandos encontrados
@@ -61,7 +62,7 @@ class ApplyCommand
 
                 //Contruyendo un arreglo de tipo clave->valor
                 // ["CommandName"=>"CommandPath"]
-            	$listCommand[$file->getRelativePath()] = $path."\\".$baseName;
+            	$listCommand[$baseName] = $path."\\".$baseName;
 			}
         }
         
