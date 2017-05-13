@@ -6,12 +6,11 @@
  * Time: 2:27 PM
  */
 
-namespace Portafolio\PageBundle\UseCase\GetUser;
+namespace Portafolio\PageBundle\UseCase\User\Get;
 
-use Portafolio\PageBundle\Command\Command;
 use Portafolio\PageBundle\Service\CommandBase;
 
-class GetUserCommand extends CommandBase
+class GetCommand extends CommandBase
 {
 
 }

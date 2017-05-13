@@ -6,7 +6,7 @@
  * Time: 11:45 AM
  */
 
-namespace Portafolio\PageBundle\UseCase\CreateUser;
+namespace Portafolio\PageBundle\UseCase\User\Create;
 
 use Portafolio\PageBundle\Command\Command;
 use Portafolio\PageBundle\Entity\users;
@@ -14,7 +14,7 @@ use Portafolio\PageBundle\Resources\Factory\IRepositoryFactory;
 use Portafolio\PageBundle\Command\Handler;
 use Portafolio\PageBundle\Service\ResponseHandler;
 
-class CreateUserHandler implements Handler
+class CreateHandler implements Handler
 {
     /**
      * Ejecuta las funciones solicitadas por el caso de uso

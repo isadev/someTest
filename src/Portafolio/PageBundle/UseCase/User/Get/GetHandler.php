@@ -6,15 +6,14 @@
  * Time: 2:53 PM
  */
 
-namespace Portafolio\PageBundle\UseCase\GetUser;
-
+namespace Portafolio\PageBundle\UseCase\User\Get;
 
 use Portafolio\PageBundle\Command\Command;
 use Portafolio\PageBundle\Command\Handler;
 use Portafolio\PageBundle\Resources\Factory\IRepositoryFactory;
 use Portafolio\PageBundle\Service\ResponseHandler;
 
-class GetUserHandler implements Handler
+class GetHandler implements Handler
 {
     /**
      * Ejecuta las funciones solicitadas por el caso de uso
