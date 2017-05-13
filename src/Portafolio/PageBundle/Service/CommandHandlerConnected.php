@@ -39,16 +39,12 @@ class CommandHandlerConnected
     {
         // Separamos el namespace de donde viene la clase del command
         $commandNamespace = explode("\\", get_class($command));
-        $lengthCommand = count($commandNamespace);
 
-        $commandName = $commandNamespace[$lengthCommand - 1];
-        $handlerName = preg_replace("/Command/", "Handler", $commandName);
+        // Sustituimos el Command del caso de uso por Handler
+        $handlerName = preg_replace("/Command/", "Handler", $commandNamespace);
 
         // Creamos la namespace para ubicar la ruta del handler
-        $handlerClassName = "";
-        for ($ii = 0; $ii < $lengthCommand - 1; $ii++)
-            $handlerClassName = $handlerClassName . $commandNamespace[$ii] . "\\";
-        $handlerClassName = $handlerClassName . $handlerName;
+        $handlerClassName = implode('\\',$handlerName);
 
         // Si la clase existe procedemos con el resto del trabajo que ejecuta el handler
         try {
