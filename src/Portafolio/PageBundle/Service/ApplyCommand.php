@@ -23,18 +23,27 @@ class ApplyCommand
 {
     
     /**
-     * Esta propiedad es usada para el manejo del Objeto Command
+     * Esta propiedad contiene el nombre de la accion del caso de uso y
+     * es usada para el manejo del Objeto Command
      *
      * @var Object
      */
 	public $command;
 
     /**
+     * Esta propiedad es utilizada para indicar el nombre del caso de uso a invocar
+     *
+     * @var string
+     */
+	public $useCaseName;
+
+    /**
      * Construct
      */ 
-	public function __construct($name = null)
+	public function __construct($useCaseName = null, $nameAction = null)
     {
-    	$this->command = $this->commandSearch($name);
+        $this->useCaseName = $useCaseName;
+        $this->command = $this->commandSearch($nameAction);
     }
 
     /**
@@ -60,9 +69,13 @@ class ApplyCommand
             	$path = str_replace("/","\\",$path);
             	$baseName = str_replace(".php","",$file->getBaseName());
 
+            	// Armar el indice de busqueda por cada caso de uso mas el nombre del command
+            	$index = preg_replace("/Command.php/", "", $file->getBasename());
+                $index = $this->useCaseName . "_" . $index;
+
                 //Contruyendo un arreglo de tipo clave->valor
-                // ["CommandName"=>"CommandPath"]
-            	$listCommand[$baseName] = $path."\\".$baseName;
+                // ["CaseUse_Action"=>"CommandPath"]
+            	$listCommand[$index] = $path."\\".$baseName;
 			}
         }
         
@@ -70,14 +83,16 @@ class ApplyCommand
     }
 
     /**
-     * Esta función es usada para buscar dentro de un listado de commando 
+     * Esta función es usada para buscar dentro de un listado de commando
      * el comando solicitado.
-     * 
+     *
+     * @param $name nombre de la accion del caso de uso Ej. Create
      * @return Object
-     */ 
+     */
     public function commandSearch($name)
     {
     	$listCommand = $this->getListCommand();
+    	$name = $this->useCaseName . "_" . $name;
 
     	if (array_key_exists($name, $listCommand))
     		return new \ReflectionClass($listCommand[$name]);

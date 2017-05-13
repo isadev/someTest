@@ -22,13 +22,8 @@ class DefaultController extends Controller
 
     public function indexAction()
     {
-        /*
-        $command = new ApplyCommand("CreateUser");
-        $response = $this->container->get('bus.request')->execute($command->setData(["name"=>123]));
-        */
-        
-        $command = new GetCommand(['name' => 'isabel2']);
-        $response = $this->container->get('bus.request')->execute($command);
+        $command = new ApplyCommand("User","Get");
+        $response = $this->container->get('bus.request')->execute($command->setData(["name"=>"isabel"]));
 
         return $this->render('PortafolioPageBundle:Default:index.html.twig',['data' => $response->getData()['name'], 'otro' => 'blablabla']);
     }
