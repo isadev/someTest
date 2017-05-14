@@ -55,7 +55,7 @@ class CommandHandlerConnected
             }
         }
         catch (\Exception $e) {
-            throw new \Exception($e->getFile(). "\\n".$e->getMessage(). "\\n". $e->getLine(), 500);
+            throw new \Exception($e->getFile(). " with message: ".$e->getMessage(). " in line: ". $e->getLine(), 500);
         }
     }
 }

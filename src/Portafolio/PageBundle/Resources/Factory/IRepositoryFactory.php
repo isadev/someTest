@@ -8,7 +8,10 @@
 
 namespace Portafolio\PageBundle\Resources\Factory;
 
-
+/**
+ * Interface IRepositoryFactory
+ * @package Portafolio\PageBundle\Resources\Factory
+ */
 interface IRepositoryFactory
 {
     /**

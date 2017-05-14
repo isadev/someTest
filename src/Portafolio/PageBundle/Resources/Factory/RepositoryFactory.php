@@ -8,7 +8,15 @@
 
 namespace Portafolio\PageBundle\Resources\Factory;
 
-
+/**
+ * Clase encargada de buscar y devolver el repositorio de
+ * la entidad solicitada
+ *
+ * Class RepositoryFactory
+ * @package Portafolio\PageBundle\Resources\Factory
+ * @author Isabel Nieto <isabelcnd@gmail.com>
+ * @version 2017/05/14
+ */
 class RepositoryFactory implements IRepositoryFactory
 {
     private $entityManager;
@@ -18,6 +26,11 @@ class RepositoryFactory implements IRepositoryFactory
         $this->entityManager = $doctrine->getManager();
     }
 
+    /**
+     * Metodo para obtener los repositorios
+     * @param $name
+     * @return mixed
+     */
     public function getRepository($name)
     {
         $position = null;
