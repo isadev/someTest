@@ -27,14 +27,28 @@ class GetHandler implements Handler
     public function execute(IRepositoryFactory $repositoryFactory, Command $command)
     {
         $request = $command->getRequest();
+        $code = 500;
+        $status = "Bad Request";
+        $message = null;
+        try {
+            $list = $repositoryFactory->getRepository('users');
 
-        $list = $repositoryFactory->getRepository('users');
 
-        $count = count($list->findAll());
-        $dataUser = $list->findBy(['name' => $request['name']]);
-        $data['name'] = $dataUser[0]->getName();
-        $data['countTotal'] = $count;
+            $count = count($list->findAll());
+            $dataUser = $list->findBy(['name' => $request['name']]);
+            $data['name'] = $dataUser[0]->getName();
 
-        return new ResponseHandler(200, 'OK', $data, "ok");
+            $data['total'] = $count;
+            $code = 200;
+            $status = "OK";
+        }
+        catch (\Exception $e) {
+            $message =  "File: " . $e->getFile() .
+                        " in line: " . $e->getLine() .
+                        " whith message: " . $e->getMessage();
+            $data['name'] = null;
+            $data['countTotal'] = -1;
+    }
+        return new ResponseHandler($code, $status, $data, $message);
     }
 }
