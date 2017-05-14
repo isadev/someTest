@@ -2,8 +2,14 @@ portafolio_page_homepage:
     path:     /
     defaults: { _controller: PortafolioPageBundle:Default:index }
 
+get_user:
+    path: /getUser
+    defaults: { _controller: PortafolioPageBundle:Default:getUser}
+    options:
+        expose: true
+
 create_user:
-    path: /create
+    path: /createUser
     defaults: { _controller: PortafolioPageBundle:Default:createUsers}
     options:
         expose: true
