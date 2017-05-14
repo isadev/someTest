@@ -14,7 +14,8 @@ class DefaultController extends Controller
 {
     public function createUsersAction(Request $request)
     {
-        $command = new CreateCommand(['name' => 'isabel2']);
+        $data = json_decode($request->getContent(), true);
+        $command = new CreateCommand($data);
         $response = $this->container->get('bus.request')->execute($command);
 
         return new JsonResponse($response->getStatus(), $response->getCode());
