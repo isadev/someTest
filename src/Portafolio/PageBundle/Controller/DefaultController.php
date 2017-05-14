@@ -2,9 +2,6 @@
 
 namespace Portafolio\PageBundle\Controller;
 
-
-use Portafolio\PageBundle\UseCase\User\Create\CreateCommand;
-use Portafolio\PageBundle\UseCase\User\Get\GetCommand;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,8 +12,9 @@ class DefaultController extends Controller
     public function createUsersAction(Request $request)
     {
         $data = json_decode($request->getContent(), true);
-        $command = new CreateCommand($data);
-        $response = $this->container->get('bus.request')->execute($command);
+
+        $command = new ApplyCommand("User","Create");
+        $response = $this->container->get('bus.request')->execute($command->setData($data));
 
         return new JsonResponse($response->getStatus(), $response->getCode());
     }
