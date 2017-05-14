@@ -14,7 +14,7 @@ use Portafolio\PageBundle\Resources\Factory\IRepositoryFactory;
 use Portafolio\PageBundle\Command\Handler;
 use Portafolio\PageBundle\Service\ResponseHandler;
 
-class CreateHandler implements Handler
+class CreateUserHandler implements Handler
 {
     /**
      * Ejecuta las funciones solicitadas por el caso de uso

@@ -10,6 +10,6 @@ namespace Portafolio\PageBundle\UseCase\User\Create;
 
 use Portafolio\PageBundle\Service\CommandBase;
 
-class CreateCommand extends CommandBase
+class CreateUserCommand extends CommandBase
 {
 }

@@ -35,7 +35,7 @@ class DefaultController extends Controller
     public function createUsersAction(Request $request) {
         $data = json_decode($request->getContent(), true);
 
-        $command = new ApplyCommand("User","Create");
+        $command = new ApplyCommand("CreateUserCommand");
         $response = $this->container->get('bus.request')->execute($command->setData($data));
 
         return new JsonResponse($response->getStatus(), $response->getCode());
@@ -52,7 +52,8 @@ class DefaultController extends Controller
     public function getUserAction(Request $request) {
         $data = json_decode($request->getContent(), true);
 
-        $command = new ApplyCommand("User","Get");
+        $command = new ApplyCommand("GetUserCommand");
+
         $response = $this->container->get('bus.request')->execute($command->setData($data));
 
         if ($response->getCode() == 200)

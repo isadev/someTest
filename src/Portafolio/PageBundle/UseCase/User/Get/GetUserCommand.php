@@ -10,7 +10,7 @@ namespace Portafolio\PageBundle\UseCase\User\Get;
 
 use Portafolio\PageBundle\Service\CommandBase;
 
-class GetCommand extends CommandBase
+class GetUserCommand extends CommandBase
 {
 
 }

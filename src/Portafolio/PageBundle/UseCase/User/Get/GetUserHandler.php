@@ -13,7 +13,7 @@ use Portafolio\PageBundle\Command\Handler;
 use Portafolio\PageBundle\Resources\Factory\IRepositoryFactory;
 use Portafolio\PageBundle\Service\ResponseHandler;
 
-class GetHandler implements Handler
+class GetUserHandler implements Handler
 {
     /**
      * Ejecuta las funciones solicitadas por el caso de uso
