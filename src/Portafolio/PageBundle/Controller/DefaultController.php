@@ -21,7 +21,7 @@ class DefaultController extends Controller
      * @version 2017/05/14
      */
     public function indexAction() {
-        return $this->render('PortafolioPageBundle:Default:index.html.twig');
+        return $this->render('PortafolioPageBundle:User:index.html.twig');
     }
 
     /**
@@ -60,5 +60,10 @@ class DefaultController extends Controller
             return new JsonResponse($response->getData(), $response->getCode());
         else
             return new JsonResponse($response->getMessage(), $response->getCode());
+    }
+
+    public function newUserCreatedViewAction() {
+//        return $this->redirect($this->generateUrl('created_view_user'));
+        return $this->render('PortafolioPageBundle:User:createdView.html.twig');
     }
 }

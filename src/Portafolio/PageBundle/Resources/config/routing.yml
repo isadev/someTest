@@ -13,3 +13,9 @@ create_user:
     defaults: { _controller: PortafolioPageBundle:Default:createUsers}
     options:
         expose: true
+
+created_view_user:
+    path: /createdViewUser
+    defaults: { _controller: PortafolioPageBundle:Default:newUserCreatedView}
+    options:
+        expose: true
