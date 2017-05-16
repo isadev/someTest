@@ -9,6 +9,7 @@
 namespace Portafolio\PageBundle\Service;
 
 use Portafolio\PageBundle\Command\Command;
+use Portafolio\PageBundle\Service\ResponseHandler;
 
 /**
  * Class CommandHandlerConnected
@@ -37,6 +38,12 @@ class CommandHandlerConnected
      */
     public function execute(Command $command)
     {
+        //Validación de los atributos del comando segun especificaciones
+        //dentro del yml del validator.
+        $error = $this->container->get("core_validator")->getValidator($command);
+        if (count($error) > 0)
+            return new ResponseHandler(400, "ok", $error);
+
         // Separamos el namespace de donde viene la clase del command
         $commandNamespace = explode("\\", get_class($command));
 
