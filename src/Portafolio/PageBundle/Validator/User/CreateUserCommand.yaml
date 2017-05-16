@@ -13,6 +13,5 @@ Portafolio\PageBundle\UseCase\User\Create\CreateUserCommand:
             - Type:
                 type: string
         address:
-            - NotBlank: ~
             - Type:
                 type: string
