@@ -1,0 +1,18 @@
+Portafolio\PageBundle\UseCase\User\Create\CreateUserCommand:
+    properties:
+        name:
+            - Type:
+                type: string
+        last_name:
+            - Type:
+                type: string
+        email:
+            - Type:
+                type: string
+        identity_card:
+            - Type:
+                type: string
+        address:
+            - NotBlank: ~
+            - Type:
+                type: string

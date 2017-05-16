@@ -1,0 +1,6 @@
+Portafolio\PageBundle\UseCase\User\Get\GetUserCommand:
+    properties:
+        name:
+            - NotBlank: ~
+            - Type:
+                type: string
