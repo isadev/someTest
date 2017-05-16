@@ -38,21 +38,7 @@ app.controller('userController', ['$scope', '$http', 'userService', function($sc
 
     $scope.redirectTo = function () {
         var route_new = Routing.generate('created_view_user');
-
-        return $http({
-            method: 'GET',
-            url: route_new
-
-        })
-            .then(
-                function (data) {
-                    $scope.response = data;
-                    console.log(route_new);
-                },
-                function error (e) {
-                    alert("alerta");
-                }
-            );
+        window.location.href = route_new;
     };
 
 }]);
