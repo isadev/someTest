@@ -12,4 +12,33 @@ use Portafolio\PageBundle\Service\CommandBase;
 
 class CreateUserCommand extends CommandBase
 {
+	/**
+	 * Nombre del usuario
+	 * @var string
+	 */
+	public $name;
+
+	/**
+	 * Apellido del usuario
+	 * @var string
+	 */
+	public $last_name;
+
+	/**
+	 * Email del usuario
+	 * @var string
+	 */
+	public $email;
+
+	/**
+	 * Cedula del usuario
+	 * @var string
+	 */
+	public $identity_card;
+
+	/**
+	 * Dirección del usuario
+	 * @var string
+	 */
+	public $address;
 }

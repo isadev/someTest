@@ -12,5 +12,9 @@ use Portafolio\PageBundle\Service\CommandBase;
 
 class GetUserCommand extends CommandBase
 {
-
+	/**
+	 * Nombre del usuario
+	 * @var string
+	 */
+	public $name;
 }
