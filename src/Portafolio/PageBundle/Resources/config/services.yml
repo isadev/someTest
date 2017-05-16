@@ -1,6 +1,7 @@
 parameters:
     repository.factory: Portafolio\PageBundle\Resources\Factory\RepositoryFactory
     command.handler.conection: Portafolio\PageBundle\Service\CommandHandlerConnected
+    core.validator: Portafolio\PageBundle\Service\CoreValidator
 
 services:
 #    portafolio_page.example:
@@ -13,3 +14,6 @@ services:
     bus.request:
         class: %command.handler.conection%
         arguments: ["@service_container", "@repositories"]
+    core_validator:
+        class: %core.validator%
+        arguments: ["@service_container"]
