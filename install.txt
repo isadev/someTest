@@ -2,6 +2,12 @@
 2.- Configurar el archivo parameters.yml dentro de la carpeta 
 	app->config->parameters.yml
 		cambiar los valores de la base de datos por la que se desee
+2.1.- Dar permisos a la carpeta
+    sudo chown 'whoami':www-data -R "ruta_hacia_el_proyecto"/someTest/var/cache/
+    sudo chmod -R 775 "ruta_hacia_el_proyecto"/someTest/var/cache/
+
+    sudo chown 'whoami':www-data -R "ruta_hacia_el_proyecto"/someTest/var/logs/
+    sudo chmod -R 775 "ruta_hacia_el_proyecto"/someTest/var/logs/
 3.- Correr composer
     composer install
 4.- Correr las migraciones
