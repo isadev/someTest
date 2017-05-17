@@ -18,8 +18,6 @@ use Portafolio\PageBundle\Command\Command;
  */
 class CommandBase implements Command
 {
-    private $attributes;
-
     /**
      * Constructor de la clase
      *
@@ -27,9 +25,35 @@ class CommandBase implements Command
      * @param $data
      * @author Isabel Nieto <isabelcnd@gmail.com>
      */
-    public function __construct($data)
+    public function __construct($data = null)
     {
-        $this->attributes = $data;
+        if (!empty($data) AND is_array($data)) {
+            foreach ($data as $key => $value) {
+                $this->{$key} = $value;
+            }
+        }
+    }
+
+    /**
+     * Get dinamico de la clase
+     *
+     * @param $key
+     * @return mixed
+     */
+    public function get($key)
+    {
+        return $this->{$key};
+    }
+
+    /**
+     * Set dinamico de la clase
+     *
+     * @param $key
+     * @param $value
+     */
+    public function set($key, $value)
+    {
+        $this->{$key} = $value;
     }
 
     /**
@@ -41,7 +65,7 @@ class CommandBase implements Command
     {
         $array_response = [];
 
-        foreach ($this->attributes as $key => $value) {
+        foreach ($this as $key => $value) {
                 $array_response["$key"] = $value;
         }
         return $array_response;
