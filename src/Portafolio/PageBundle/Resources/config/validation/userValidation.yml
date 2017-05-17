@@ -1,0 +1,6 @@
+Portafolio\PageBundle\Entity\users:
+    properties:
+        name:
+            - NotBlank: ~
+            - Length:
+                min: 23
