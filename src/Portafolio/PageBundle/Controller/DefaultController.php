@@ -3,6 +3,7 @@
 namespace Portafolio\PageBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Finder\Finder;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Portafolio\PageBundle\Service\ApplyCommand;
@@ -21,6 +22,12 @@ class DefaultController extends Controller
      * @version 2017/05/14
      */
     public function indexAction() {
+
+        $finder = new Finder();
+        $dir = __DIR__.'/../Validate/';
+        foreach ($finder->files()->in($dir) as $file) {
+            dump($file);
+        }
         return $this->render('PortafolioPageBundle:User:index.html.twig');
     }
 

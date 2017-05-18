@@ -32,7 +32,8 @@
         "pug-php/pug-symfony": "^2.2",
         "friendsofsymfony/jsrouting-bundle": "^1.6",
         "doctrine/doctrine-migrations-bundle": "^1.0",
-        "symfony/validator": "^3.2"
+        "symfony/validator": "^3.2",
+        "symfony/yaml": "^3.2"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

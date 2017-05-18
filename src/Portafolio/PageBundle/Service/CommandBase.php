@@ -42,7 +42,7 @@ class CommandBase implements Command
      */
     public function get($key)
     {
-        return $this->{$key};
+        return (isset($this->{$key})) ? $this->{$key} : null;
     }
 
     /**

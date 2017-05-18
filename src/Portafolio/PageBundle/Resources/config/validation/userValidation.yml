@@ -3,4 +3,4 @@ Portafolio\PageBundle\Entity\users:
         name:
             - NotBlank: ~
             - Length:
-                min: 23
+                min: 3
