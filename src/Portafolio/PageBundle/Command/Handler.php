@@ -9,6 +9,7 @@
 namespace Portafolio\PageBundle\Command;
 
 use Portafolio\PageBundle\Resources\Factory\IRepositoryFactory;
+use Portafolio\PageBundle\Resources\Factory\IServiceFactory;
 use Portafolio\PageBundle\Resources\Factory\RepositoryFactory;
 
 interface Handler
@@ -16,11 +17,11 @@ interface Handler
     /**
      * Ejecuta las funciones solicitadas por el caso de uso
      *
-     * @param IRepositoryFactory $repositoryFactory
+     * @param IServiceFactory $serviceFactory
      * @param Command $command
      * @return mixed
      * @author Isabel Nieto <isabelcnd@gmail.com>
      * @version 03/05/2017
      */
-    public function execute(IRepositoryFactory $repositoryFactory, Command $command);
+    public function execute(IServiceFactory $serviceFactory, Command $command);
 }

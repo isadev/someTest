@@ -17,12 +17,12 @@ use Portafolio\PageBundle\Command\Command;
 class CommandHandlerConnected
 {
     private $container;
-    private $rf;
+    private $serviceF;
 
-    public function __construct($container, $rf)
+    public function __construct($container, $serviceFactory)
     {
         $this->container = $container;
-        $this->rf = $rf;
+        $this->serviceF = $serviceFactory;
     }
 
     /**
@@ -51,7 +51,7 @@ class CommandHandlerConnected
             if (class_exists($handlerClassName, true)) {
                 $reflectedClass = new \ReflectionClass($handlerClassName);
                 $handler = $reflectedClass->newInstance();
-                return $handler->execute($this->rf, $command);
+                return $handler->execute($this->serviceF, $command);
             }
         }
         catch (\Exception $e) {
