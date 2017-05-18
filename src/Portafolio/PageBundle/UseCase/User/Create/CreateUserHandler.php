@@ -27,14 +27,22 @@ class CreateUserHandler implements Handler
      */
     public function execute(IServiceFactory $serviceFactory, Command $command)
     {
-        $request = $command->getRequest();
+        try {
+            $request = $command->getRequest();
+            $list = $serviceFactory->get('em')->getRepository('PortafolioPageBundle:users');
+            $validator = $serviceFactory->get('container')->get('validator');
 
-        $list = $serviceFactory->get('em')->getRepository('PortafolioPageBundle:users');
+            $user = new users($request);
+            $errors = $validator->validate($user);
 
-        $user = new users($request);
+            if (count($errors) > 0)
+                return new ResponseHandler(400, 'BAD REQUEST', $errors[0]->getMessage(), "Check data");
 
-        $list->saveObj($user);
-
-        return new ResponseHandler(200, 'OK');
+            $list->saveObj($user);
+            return new ResponseHandler(200, 'OK');
+        }
+        catch (\Exception $exception) {
+            throw new \Exception($exception->getMessage(), 500);
+        }
     }
 }
