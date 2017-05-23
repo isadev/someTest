@@ -1,0 +1,7 @@
+fos_user_profile_show:
+    path: /
+    defaults: { _controller: PortafolioPageBundle:Profile:show }
+
+fos_user_profile_edit:
+    path: /edit_profile
+    defaults: { _controller: PortafolioPageBundle:Profile:edit }

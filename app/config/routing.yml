@@ -8,3 +8,22 @@ fos_js_routing:
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
+
+fos_user_security:
+    resource: "@PortafolioPageBundle/Resources/config/routing/security.yml"
+
+fos_user_profile:
+    resource: "@PortafolioPageBundle/Resources/config/routing/profile.yml"
+    prefix: /profile
+
+fos_user_register:
+    resource: "@PortafolioPageBundle/Resources/config/routing/registration.yml"
+    prefix: /register
+
+fos_user_resetting:
+    resource: "@PortafolioPageBundle/Resources/config/routing/resetting.yml"
+    prefix: /resetting
+
+fos_user_change_password:
+    resource: "@PortafolioPageBundle/Resources/config/routing/change_password.yml"
+    prefix: /change_password

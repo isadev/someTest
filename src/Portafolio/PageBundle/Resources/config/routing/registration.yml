@@ -1,0 +1,15 @@
+fos_user_registration_register:
+    path: /
+    defaults: { _controller: PortafolioPageBundle:Registration:register }
+
+fos_user_registration_check_email:
+    path: /check-email
+    defaults: { _controller: PortafolioPageBundle:Registration:checkEmail }
+
+fos_user_registration_confirm:
+    path: /confirm/{token}
+    defaults: { _controller: PortafolioPageBundle:Registration:confirm }
+
+fos_user_registration_confirmed:
+    path: /confirmed
+    defaults: { _controller: PortafolioPageBundle:Registration:confirmed }

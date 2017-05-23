@@ -1,0 +1,15 @@
+fos_user_resetting_request:
+    path: /request
+    defaults: { _controller: PortafolioPageBundle:Resetting:request }
+
+fos_user_resetting_send_email:
+    path: /send-email
+    defaults: { _controller: PortafolioPageBundle:Resetting:sendEmail }
+
+fos_user_resetting_check_email:
+    path: /check-email
+    defaults: { _controller: PortafolioPageBundle:Resetting:checkEmail }
+
+fos_user_resetting_reset:
+    path: /reset/{token}
+    defaults: { _controller: PortafolioPageBundle:Resetting:reset }
