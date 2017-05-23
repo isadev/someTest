@@ -49,26 +49,6 @@ class CommandHandlerConnected
         // Creamos la namespace para ubicar la ruta del handler
         $handlerClassName = implode('\\',$handlerName);
 
-        try {
-            $finder = new Finder();
-
-            // Nos ubicamos donde se encuentran los validadores de los caso de uso
-            $dir = __DIR__.'/../Validate/';
-
-            foreach ($finder->files()->in($dir) as $file) {
-
-                $content = Yaml::parse(file_get_contents(__DIR__ . '/../Validate/' . $file->getFilename()));
-
-                $commandName = 'CreateUserCommand';
-                $commandFileName = preg_replace('/.yml/','',$content[$commandName]);
-
-                dump($content);
-                var_dump([$content[0]/*, $commandFileName*/]);
-            }
-        } catch (ParseException $e) {
-            dump("Unable to parse the YAML string: ".$e->getMessage());
-        }
-
         // Si la clase existe procedemos con el resto del trabajo que ejecuta el handler
         try {
             if (class_exists($handlerClassName, true)) {
