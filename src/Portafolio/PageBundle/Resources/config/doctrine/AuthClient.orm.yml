@@ -1,0 +1,9 @@
+Portafolio\PageBundle\Entity\AuthClient:
+    type: entity
+    table: auth_client
+#    repositoryClass: Portafolio\PageBundle\Repository\usersRepository
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO

@@ -1,0 +1,20 @@
+Portafolio\PageBundle\Entity\AuthAuthCode:
+    type: entity
+    table: auth_auth_code
+    #    repositoryClass: Portafolio\PageBundle\Repository\usersRepository
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    manyToOne:
+        user:
+            targetEntity: Portafolio\PageBundle\Entity\users
+            joinColumn:
+                name: user_id
+                referencedColumnName: id
+        client:
+            targetEntity: Portafolio\PageBundle\Entity\AuthClient
+            joinColumn:
+                name: client_id
+                referencedColumnName: id

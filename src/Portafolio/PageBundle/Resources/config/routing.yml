@@ -19,3 +19,9 @@ created_view_user:
     defaults: { _controller: PortafolioPageBundle:Default:newUserCreatedView}
     options:
         expose: true
+
+create_user_auth:
+    path: /createdUserAuth
+    defaults: { _controller: PortafolioPageBundle:Default:createUserAuth }
+    options:
+        expose: true

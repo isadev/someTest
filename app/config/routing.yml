@@ -27,3 +27,9 @@ fos_user_resetting:
 fos_user_change_password:
     resource: "@PortafolioPageBundle/Resources/config/routing/change_password.yml"
     prefix: /change_password
+
+fos_oauth_server_token:
+    resource: "@FOSOAuthServerBundle/Resources/config/routing/token.xml"
+
+fos_oauth_server_authorize:
+    resource: "@FOSOAuthServerBundle/Resources/config/routing/authorize.xml"

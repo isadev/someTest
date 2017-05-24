@@ -82,3 +82,12 @@ fos_user:
     from_email:
         address: youemail@email.com
         sender_name: You
+
+fos_oauth_server:
+    db_driver: orm       # Drivers available: orm, mongodb, or propel
+    client_class:        Portafolio\PageBundle\Entity\AuthClient
+    access_token_class:  Portafolio\PageBundle\Entity\AuthAccessToken
+    refresh_token_class: Portafolio\PageBundle\Entity\AuthRefreshToken
+    auth_code_class:     Portafolio\PageBundle\Entity\AuthAuthCode
+    service:
+        user_provider: fos_user.user_provider.username
