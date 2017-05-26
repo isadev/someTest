@@ -103,12 +103,12 @@ class DefaultController extends Controller
         return 1;*/
         $clientManager = $this->container->get('fos_oauth_server.client_manager.default');
         $client = $clientManager->createClient();
-        $client->setRedirectUris(array('http://www.web_page.dev/app_dev.php/createdViewUser'));
-        $client->setAllowedGrantTypes(array('token', 'authorization_code'));
+//        $client->setRedirectUris(array('http://www.web_page.dev/app_dev.php/createdViewUser'));
+        $client->setAllowedGrantTypes(['client_credentials']/*array('token', 'authorization_code')*/);
         $clientManager->updateClient($client);
 
-//        dump(["randomId" => $client->getRandomId(),"public_id" => $client->getPublicId()]);
-//return 1;
+        dump(["secretId" => $client->getSecret(),"public_id" => $client->getPublicId(), "client" => $client]);
+return 1;
         return $this->redirect($this->generateUrl('fos_oauth_server_authorize', array(
             'client_id'     => $client->getPublicId(),
             'redirect_uri'  => 'http://www.web_page.dev/app_dev.php/createdViewUser',
