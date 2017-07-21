@@ -51,3 +51,4 @@
 # Proy IDE
 /.idea/
 
+/web/app_dev.php
