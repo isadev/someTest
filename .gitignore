@@ -50,3 +50,6 @@
 
 # Proy IDE
 /.idea/
+
+#htaccess
+/web/.htaccess
