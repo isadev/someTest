@@ -78,4 +78,4 @@ DirectoryIndex app.php
 #RedirectMatch 302 /app_dev.php/aba?(.*)$ /app_dev.php/
 
 #deja el simbolo '?', pero borra el parametro get
-RedirectMatch 302 /app_dev.php/aba?(.*)$ /app_dev.php/?
+#RedirectMatch 302 /app_dev.php/aba?(.*)$ /app_dev.php/?
