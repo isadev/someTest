@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Strap Test</title>
+    {# Librerias de ajenas al sistema #}
+    <script src="{{ asset('bundles/portafoliopage/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('bundles/portafoliopage/bootstrap/dist/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/portafoliopage/css/strapp_styles.css') }}">
+    <script src="{{ asset('bundles/portafoliopage/js/angular.min.js') }}"></script>
+
+    {# Modulos app del sistema #}
+    <script src="{{ asset('bundles/portafoliopage/angular/app.js') }}"></script>
+
+    {# Bundles de symfony #}
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+
+    <script src="{{ asset('bundles/portafoliopage/angular/strapp/testStrappController.js') }}"></script>
+</head>
+<body ng-app="app" ng-controller="testStrappController" class="strapp_body">
+    <header>
+        <h1> Strap Test </h1>
+    </header>
+
+    <section class="row strapp_section">
+        <div class="col-xs-4 col-sm-4 strapp_agencia">
+
+            <button ng-click="viewStrappAgencia()">Crear Agencia</button>
+        </div>
+        <div class="col-xs-4 col-sm-4 strapp_viajero">
+
+            <button ng-click="viewStrappViajero()">Crear viajero</button>
+        </div>
+        <div class="col-xs-4 col-sm-4 strapp_viaje">
+
+            <button ng-click="viewStrappViaje()">Crear viaje</button>
+        </div>
+    </section>
+    <section class="row">
+        <div class="col-xs-4 col-sm-4 strapp_agencia_consulta">
+
+            <button ng-click="viewGetStrappAgencia()">Consultar Agencias</button>
+        </div>
+        <div class="col-xs-4 col-sm-4 strapp_viajero_consulta">
+
+            <button ng-click="viewGetStrappViajero()">Consultar Viajeros</button>
+        </div>
+        <div class="col-xs-4 col-sm-4 strapp_viajes_consulta">
+
+            <button ng-click="viewGetStrappViajes()">Consultar Viajes</button>
+        </div>
+    </section>
+</body>
+</html>

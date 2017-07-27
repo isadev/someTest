@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Consultar viajero</title>
+
+    {# Librerias de ajenas al sistema #}
+    <script src="{{ asset('bundles/portafoliopage/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('bundles/portafoliopage/bootstrap/dist/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/portafoliopage/css/strapp_styles.css') }}">
+    <script src="{{ asset('bundles/portafoliopage/js/angular.min.js') }}"></script>
+
+    {# Modulos app del sistema #}
+    <script src="{{ asset('bundles/portafoliopage/angular/app.js') }}"></script>
+
+    {# Bundles de symfony #}
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+
+    <script src="{{ asset('bundles/portafoliopage/angular/strapp/testStrappController.js') }}"></script>
+</head>
+<body ng-app="app" ng-controller="testStrappController">
+<div>
+    <input type="text" placeholder="put here the code text" ng-model="newCode">
+    <input type="text" placeholder="put here the agency name " ng-model="newAgencyName">
+    <input type="text" placeholder="put here the id number " ng-model="newiDNumber">
+    <button ng-click="getDataStrappViajes()">Buscar viaje</button>
+
+        <div class="row" ng-repeat="data in response">
+            <div class="col-sm-1">
+                <span> Codigo : [[ data[$index].codigo ]]</span>
+            </div>
+            <div class="col-sm-2">
+                <span> Destino : [[ data[$index].destino ]] </span>
+            </div>
+            <div class="col-sm-2">
+                <span> Origen : [[ data[$index].origen ]]</span>
+            </div>
+            <div class="col-sm-2">
+                <span> Fecha : [[ data[$index].fecha ]]</span>
+            </div>
+            <div class="col-sm-1">
+                <span> Plazas : [[ data[$index].numero_plaza ]]</span>
+            </div>
+            <div class="col-sm-2">
+                <span> Cedula viajero : [[ data[$index].viajero ]]</span>
+            </div>
+            <div class="col-sm-2">
+                <span> Nombre agencia : [[ data[$index].nombre_agencia ]]</span>
+            </div>
+        </div>
+    <button ng-click="updateViewStrappViaje()">Actualizar Viaje</button>
+    <input type="text" placeholder="enter your code number" ng-model="codigo">
+    <button ng-click="homeStrapp()">home</button>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear viajero</title>
+
+    {# Librerias de ajenas al sistema #}
+    <script src="{{ asset('bundles/portafoliopage/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('bundles/portafoliopage/bootstrap/dist/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/portafoliopage/css/strapp_styles.css') }}">
+    <script src="{{ asset('bundles/portafoliopage/js/angular.min.js') }}"></script>
+
+    {# Modulos app del sistema #}
+    <script src="{{ asset('bundles/portafoliopage/angular/app.js') }}"></script>
+
+    {# Bundles de symfony #}
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+
+    <script src="{{ asset('bundles/portafoliopage/angular/strapp/testStrappController.js') }}"></script>
+</head>
+<body ng-app="app" ng-controller="testStrappController">
+<div>
+    <input type="text" placeholder="Put your id viajero number here" ng-model="iDNumber">
+    <input type="text" placeholder="Put your agency name here" ng-model="agencyName">
+    <input type="text" placeholder="Put your destiny here" ng-model="newDestino">
+    <input type="text" placeholder="Put your origin here" ng-model="newOrigen">
+    <input type="text" placeholder="Put your ticket name here" ng-model="newTicketNumber">
+    <input type="text" placeholder="Put your code number here" ng-model="newCodeNumber">
+    <input type="text" placeholder="Put your comments here" ng-model="newOther">
+    <input type="text" placeholder="Put your date here" ng-model="newDate">
+    <input type="number" placeholder="Put your plaza number here" ng-model="newPlaza">
+    <button ng-click="createStrappViaje()"> Crear </button>
+    <div class="row">
+        <div class="col-sm-12">
+            [[ response ]]
+        </div>
+    </div>
+
+    <button ng-click="homeStrapp()">home</button>
+</div>
+</body>
+</html>

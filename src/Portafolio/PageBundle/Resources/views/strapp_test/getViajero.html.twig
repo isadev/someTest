@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Consultar viajero</title>
+
+    {# Librerias de ajenas al sistema #}
+    <script src="{{ asset('bundles/portafoliopage/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    {#<script src="{{ asset('bundles/portafoliopage/jquery/dist/jquery.min.js') }}"></script>#}
+    <link rel="stylesheet" href="{{ asset('bundles/portafoliopage/bootstrap/dist/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/portafoliopage/css/strapp_styles.css') }}">
+    <script src="{{ asset('bundles/portafoliopage/js/angular.min.js') }}"></script>
+
+    {# Modulos app del sistema #}
+    <script src="{{ asset('bundles/portafoliopage/angular/app.js') }}"></script>
+
+    {# Bundles de symfony #}
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+
+    <script src="{{ asset('bundles/portafoliopage/angular/strapp/testStrappController.js') }}"></script>
+</head>
+<body ng-app="app" ng-controller="testStrappController">
+<div>
+    <input type="text" placeholder="put here the idNumer" ng-model="newIdNumber">
+    <button ng-click="getDataStrappViajero()">Buscar Viajero</button>
+
+    <div class="row">
+        <div class="col-sm-3 response">
+            <span> Nombre : [[ response[0].nombre ]]</span>
+        </div>
+        <div class="col-sm-3 response">
+            <span> Cedula : [[ response[0].cedula ]]</span>
+        </div>
+        <div class="col-sm-3 response">
+            <span> Telefono: [[ response[0].telefono ]]</span>
+        </div>
+        <div class="col-sm-3 response">
+            <span> Direccion : [[ response[0].direccion ]]</span>
+        </div>
+    </div>
+    <button ng-click="updateViewStrappViajero()">Actualizar Viajero</button>
+    <input type="text" placeholder="enter your idNumber" ng-model="iDNumber">
+    <button ng-click="homeStrapp()">home</button>
+</div>
+</body>
+</html>
+
