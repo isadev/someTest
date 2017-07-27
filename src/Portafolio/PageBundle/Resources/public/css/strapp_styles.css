@@ -1,0 +1,45 @@
+html {
+    margin: 20px;
+    background: lightgray;
+    padding: 15px;
+}
+
+body {
+    background: #949494!important;
+    padding: 20px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+input {
+    background: lightgray;
+}
+
+.response {
+    padding: 10px;
+}
+.strapp_agencia {
+    padding: 10px;
+}
+
+.strapp_viajero {
+    padding: 10px;
+}
+
+.strapp_viaje {
+    padding: 10px;
+}
+
+.strapp_agencia_consulta {
+    padding: 10px;
+}
+
+.strapp_viajes_consulta {
+    padding: 10px;
+}
+
+.strapp_viajero_consulta {
+    padding: 10px;
+}
