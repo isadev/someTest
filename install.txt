@@ -10,9 +10,11 @@
     sudo chmod -R 775 "ruta_hacia_el_proyecto"/someTest/var/logs/
 3.- Correr composer
     composer install
+3.1 - Correr los asstes
+    bin/console  assets:install
 4.- Correr las migraciones
-	bin:console d:m:m
-5.- Ir al navegador para crear usuarios
-	localhost/app_dev.php/create
-6.- Ir al navegador para consultar lo ingresado
-	localhost/app_dev.php/
+	bin/console d:m:m
+4.1- Correr el servidor
+    bin/console server:run
+5.- Ir al navegador
+	localhost/app_dev.php/home
