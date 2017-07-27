@@ -1,0 +1,39 @@
+Portafolio\PageBundle\Entity\viajero:
+    type: entity
+    table: viajero
+    repositoryClass: Portafolio\PageBundle\Repository\viajeroRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        direccion:
+            type: string
+            length: 50
+            nullable: false
+        cedula:
+            type: string
+            length: 15
+            nullable: false
+        nombre:
+            type: string
+            length: 50
+            nullable: false
+        telefono:
+            type: integer
+            nullable: false
+    manyToOne:
+         agencia:
+             targetEntity: Portafolio\PageBundle\Entity\agencia
+             inversedBy: viajero
+             joinColumn:
+               name: agencia_id
+               referencedColumnName: id
+    oneToMany:
+         viajes:
+             targetEntity: Portafolio\PageBundle\Entity\viajes
+             mappedBy: viajero
+
+    lifecycleCallbacks: {  }

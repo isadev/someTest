@@ -1,0 +1,55 @@
+Portafolio\PageBundle\Entity\viajes:
+    type: entity
+    table: viajes
+    repositoryClass: Portafolio\PageBundle\Repository\viajesRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        origen:
+            type: string
+            length: 15
+            nullable: false
+        destino:
+            type: string
+            length: 15
+            nullable: false
+        fecha:
+            type: date
+            nullable: false
+        codigo:
+            type: string
+            length: 15
+            nullable: false
+        nombre:
+            type: string
+            length: 50
+            nullable: false
+        numero_plaza:
+            type: integer
+            nullable: false
+        otros:
+            type: string
+            length: 50
+            nullable: false
+    manyToOne:
+         agencia:
+             targetEntity: Portafolio\PageBundle\Entity\agencia
+             inversedBy: viajes
+             joinColumn:
+               name: agencia_id
+               referencedColumnName: id
+         viajero:
+              targetEntity: Portafolio\PageBundle\Entity\viajero
+              inversedBy: viajes
+              joinColumn:
+                name: viajero_id
+                referencedColumnName: id
+
+
+
+
+    lifecycleCallbacks: {  }
