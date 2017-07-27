@@ -1,0 +1,101 @@
+<?php
+
+namespace Portafolio\PageBundle\Entity;
+
+/**
+ * agencia
+ */
+class agencia
+{
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var string
+     */
+    private $nombre;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $viajero;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->viajero = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nombre
+     *
+     * @param string $nombre
+     *
+     * @return agencia
+     */
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+
+        return $this;
+    }
+
+    /**
+     * Get nombre
+     *
+     * @return string
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+
+    /**
+     * Add viajero
+     *
+     * @param \Portafolio\PageBundle\Entity\viajero $viajero
+     *
+     * @return agencia
+     */
+    public function addViajero(\Portafolio\PageBundle\Entity\viajero $viajero)
+    {
+        $this->viajero[] = $viajero;
+
+        return $this;
+    }
+
+    /**
+     * Remove viajero
+     *
+     * @param \Portafolio\PageBundle\Entity\viajero $viajero
+     */
+    public function removeViajero(\Portafolio\PageBundle\Entity\viajero $viajero)
+    {
+        $this->viajero->removeElement($viajero);
+    }
+
+    /**
+     * Get viajero
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getViajero()
+    {
+        return $this->viajero;
+    }
+}
+
