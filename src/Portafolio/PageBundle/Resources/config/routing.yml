@@ -19,3 +19,128 @@ created_view_user:
     defaults: { _controller: PortafolioPageBundle:Default:newUserCreatedView}
     options:
         expose: true
+
+#--------------- Render Home --------------
+render_home_test_strap:
+    path: /home
+    defaults: { _controller: PortafolioPageBundle:RenderStrapp:renderHome}
+    options:
+        expose: true
+        method: [GET]
+
+#--------------- Get View --------------
+render_view_strapp_create_viajero:
+    path: /renderCreateViajero
+    defaults: { _controller: PortafolioPageBundle:RenderStrapp:renderCreateViajero}
+    options:
+        expose: true
+        method: [GET]
+
+render_view_strapp_create_agencia:
+    path: /renderCreateAgencia
+    defaults: { _controller: PortafolioPageBundle:RenderStrapp:renderCreateAgencia}
+    options:
+        expose: true
+        method: [GET]
+
+render_view_strapp_create_viaje:
+    path: /renderCreateViaje
+    defaults: { _controller: PortafolioPageBundle:RenderStrapp:renderCreateViaje}
+    options:
+        expose: true
+        method: [GET]
+
+# ------------- Render Get ---------------
+render_view_strapp_get_viajero:
+    path: /renderGetViajero
+    defaults: { _controller: PortafolioPageBundle:RenderStrapp:renderGetViajero}
+    options:
+        expose: true
+        method: [GET]
+
+render_view_strapp_get_agencia:
+    path: /renderGetAgencia
+    defaults: { _controller: PortafolioPageBundle:RenderStrapp:renderGetAgencia}
+    options:
+        expose: true
+        method: [GET]
+
+render_view_strapp_get_viaje:
+    path: /renderGetViaje
+    defaults: { _controller: PortafolioPageBundle:RenderStrapp:renderGetViaje}
+    options:
+        expose: true
+        method: [GET]
+
+# ------------- Render Update -------------
+render_view_strapp_update_viajero:
+    path: /renderUpdateViajero/{cedula}
+    defaults: { _controller: PortafolioPageBundle:RenderStrapp:renderUpdateViajero}
+    options:
+        expose: true
+        method: [GET]
+
+render_view_strapp_update_viaje:
+    path: /renderUpdateViaje/{codigo}
+    defaults: { _controller: PortafolioPageBundle:RenderStrapp:renderUpdateViaje}
+    options:
+        expose: true
+        method: [GET]
+# ------------- Create Data ---------------
+create_viajero:
+    path: /createViajero
+    defaults: { _controller: PortafolioPageBundle:CreateStrapp:createViajero }
+    options:
+        expose: true
+        method: [POST]
+
+create_agencia:
+    path: /createAgencia
+    defaults: { _controller: PortafolioPageBundle:CreateStrapp:createAgencia}
+    options:
+        expose: true
+        method: [POST]
+
+create_viaje:
+    path: /createViaje
+    defaults: { _controller: PortafolioPageBundle:CreateStrapp:createViaje }
+    options:
+        expose: true
+        method: [POST]
+
+#--------------- Get Data --------------
+get_viajero:
+    path: /getViajero/{cedula}
+    defaults: { _controller: PortafolioPageBundle:CreateStrapp:getViajero }
+    options:
+        expose: true
+        method: [GET]
+
+get_agencia:
+    path: /getAgencia/{agenciaNombre}
+    defaults: { _controller: PortafolioPageBundle:CreateStrapp:getAgencia }
+    options:
+        expose: true
+        method: [GET]
+
+get_viaje:
+    path: /getViaje
+    defaults: { _controller: PortafolioPageBundle:CreateStrapp:getViaje }
+    options:
+        expose: true
+        method: [POST]
+
+#------------------ Update Data ------------
+update_viajero:
+   path: /updateViajero
+   defaults: { _controller: PortafolioPageBundle:UpdateStrapp:updateViajero }
+   options:
+       expose: true
+       method: [GET, POST]
+
+update_viaje:
+   path: /updateViaje
+   defaults: { _controller: PortafolioPageBundle:UpdateStrapp:updateViaje }
+   options:
+       expose: true
+       method: [GET, POST]

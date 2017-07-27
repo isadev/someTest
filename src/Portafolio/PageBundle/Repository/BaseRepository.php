@@ -42,4 +42,9 @@ class BaseRepository extends \Doctrine\ORM\EntityRepository
     {
         $this->getEntityManager()->flush();
     }
+
+    public function findAllObjects()
+    {
+        return $this->findAll();
+    }
 }
