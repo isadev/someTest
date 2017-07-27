@@ -14,6 +14,11 @@
       		cambiar los valores de la base de datos por la que se desee
 3.1 - Correr los asstes
     bin/console  assets:install --symlink
+4.0- Seleccionar con cual motor de BD trabajar
+    4.0.1 - Si es mysql -> borrar la migracion Version20170726132447
+    4.0.2 - Si es postgres -> borrar la migracion Version20170727105231 y cambiar en el archivo
+        app->config->config.yml
+            el driver a "pdo_pgsql"
 4.- Correr las migraciones
 	bin/console d:m:m
 4.1- Correr el servidor
