@@ -3,4 +3,6 @@ node {
 	echo 'Pasando por la etapa 1'
 	stage: 'Etapa 2'
 	echo 'Pasando por la etapa 2'
+	stage: 'Etapa 3'
+	echo 'Pasando por la etapa 3'
 }
