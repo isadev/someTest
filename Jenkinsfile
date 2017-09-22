@@ -5,12 +5,10 @@ node {
 		echo "$env.BRANCH_NAME"
 	}
 	stage ('Moviendo al directorio del repositorio') {
-
-		sh "pwd;env; ssh sharepoint@192.168.80.247 ls"
-
+		sh "ssh sharepoint@192.168.80.247"
 		//sh "ssh "
-		//sh "cd /vol/dat/dat0/usr/resp_luis_villalobos"
-		//echo "pwd"		
+		sh "ls; cd /vol/dat/dat0/usr/resp_luis_villalobos"
+		sh "pwd"		
 	}
 	/*stage ('Ejecutando comando de symfony') {
 		steps {

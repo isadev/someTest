@@ -1,6 +1,8 @@
 Pasos para correr el jenkins
 
 PASOS PARA CONECTARSE AL SERVIDOR DONDE SE HARAN LOS PULL DE LAS RAMAS
+0.- En una instalacion sin docker 
+	* sudo su - jenkins
 1.- crear la llave publica en el servidor donde esta jenkins
     * ssh-keygen -t rsa (no generarle passphrase )
     * cat ~/.ssh/id_rsa.pub
