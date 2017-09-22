@@ -1,0 +1,23 @@
+Pasos para correr el jenkins
+
+PASOS PARA CONECTARSE AL SERVIDOR DONDE SE HARAN LOS PULL DE LAS RAMAS
+1.- crear la llave publica en el servidor donde esta jenkins
+    * ssh-keygen -t rsa (no generarle passphrase )
+    * cat ~/.ssh/id_rsa.pub
+2.- crear desde la maquina del jenkins el enlace hacia la maquina que mantendra los datos del repositorio
+	* ssh-copy-id usuario_maquina_repositorio@ip_maquina_repositorio
+
+PRUEBAS
+1.- node {
+	
+	stage ("obteniendo el nombre de la rama") {
+		echo "$env.BRANCH_NAME"
+	}
+	stage ('Moviendo al directorio del repositorio') {
+		steps {
+			sh "ssh sharepoint@192.168.80.247"
+			sh "cd /vol/dat/dat0/usr/resp_luis_villalobos"
+			echo "pwd"
+		}
+	}
+}
