@@ -4,7 +4,7 @@ node {
 	stage ("obteniendo el nombre de la rama") {
 		echo "$env.BRANCH_NAME"
 	}
-	stage ('Moviendo al directorio del repositorio') {
+	stage ('Ejecutando script que borra cache y compila los estilos') {
 		sh "ssh sharepoint@192.168.80.247 ./scripts_symfony.sh"
 	}
 	/*stage ('Ejecutando comando de symfony') {

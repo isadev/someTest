@@ -8,6 +8,7 @@ PASOS PARA CONECTARSE AL SERVIDOR DONDE SE HARAN LOS PULL DE LAS RAMAS
     * cat ~/.ssh/id_rsa.pub
 2.- crear desde la maquina del jenkins el enlace hacia la maquina que mantendra los datos del repositorio
 	* ssh-copy-id usuario_maquina_repositorio@ip_maquina_repositorio
+3.- crear denro de la maquina del repositorio, el archivo .sh que tendra las instrucciones de correr tanto el docker
 
 PRUEBAS
 1.- node {
@@ -21,3 +22,13 @@ PRUEBAS
 		echo "pwd"
 	}
 }
+
+Ejecutar un script similar a este:
+
+cd /home/sharepoint/repos/hj-rivolirambla
+docker-compose build
+docker-compose up -d
+
+docker exec -i hjrivolirambla_db_1 mysql -uwoz_juice -pwoz_juice woz_juice < mysqldump -uroot -p woz_juice > rivolirambla20170619.sql
+
+docker exec -it hjrivolirambla_php-apache_1 runuser www-data -c 'app/console assets:install --symlink; app/console cache:clear;app/console cache:clear --env=pord'
