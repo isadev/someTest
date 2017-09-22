@@ -5,7 +5,8 @@ node {
 		echo "$env.BRANCH_NAME"
 	}
 	stage ('Moviendo al directorio del repositorio') {
-		sh "ssh -o StrictHostKeyChecking=no sharepoint@192.168.80.247 /bin/bash"
+
+		sh "pwd;env; ssh sharepoint@192.168.80.247 ls"
 
 		//sh "ssh "
 		//sh "cd /vol/dat/dat0/usr/resp_luis_villalobos"
