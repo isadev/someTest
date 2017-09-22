@@ -8,7 +8,7 @@ node {
 		sh "ssh sharepoint@192.168.80.247"
 		//sh "ssh "
 		//sh "cd /vol/dat/dat0/usr/resp_luis_villalobos"
-		echo "pwd"		
+		//echo "pwd"		
 	}
 	/*stage ('Ejecutando comando de symfony') {
 		steps {
