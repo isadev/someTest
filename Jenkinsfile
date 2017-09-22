@@ -7,7 +7,8 @@ node {
 	stage ('Moviendo al directorio del repositorio') {
 		sh "ssh sharepoint@192.168.80.247"
 		//sh "ssh "
-		sh "ls; cd /vol/dat/dat0/usr/resp_luis_villalobos"
+		sh "ls"
+		sh "cd"
 		sh "pwd"		
 	}
 	/*stage ('Ejecutando comando de symfony') {
