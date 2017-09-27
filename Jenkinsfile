@@ -15,19 +15,7 @@ node {
 
 	stage ("obteniendo el nombre de la rama") {
 		echo "$env.BRANCH_NAME"
-		echo branch
-		echo $branch
-		echo ${branch}
-		echo "branch"
-		echo "$branch"
-		echo "${branch}"
-
 	}
-	stage ("descargando los cambios de la rama") {
-
-	}
-
-
 	stage ('Ejecutando script que borra cache y compila los estilos') {
 		//sh "ssh sharepoint@192.168.80.247 ./scripts_symfony.sh"
 
