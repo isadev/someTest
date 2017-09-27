@@ -2,10 +2,10 @@
 node {
 	checkout([
 		$class: 'GitSCM', 
-		branches: [[name: 'BRANCH_NAME']], 
+		branches: [[name: 'feature/strappTest']], 
 		extensions: [[
 			$class: 'LocalBranch', 
-			localBranch: 'BRANCH_NAME'
+			localBranch: 'feature/strappTest'
 		]], 
 		submoduleCfg: [], 
 		userRemoteConfigs: [[
