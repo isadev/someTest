@@ -25,7 +25,7 @@ node {
 
 
 	stage ('Ejecutando script que borra cache y compila los estilos') {
-		sh "ssh sharepoint@192.168.80.247 ./scripts_symfony.sh"
+		sh "ssh sharepoint@192.168.80.247 ./symfony.sh"
 
 	}
 	/*stage ('Ejecutando comando de symfony') {
