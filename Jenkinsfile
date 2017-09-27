@@ -15,18 +15,17 @@ node {
 
 	stage ("obteniendo el nombre de la rama") {
 		echo "1 $env.BRANCH_NAME"
-		echo "2 branch"
-		echo "3 $branch"
-		echo "4 ${branch}"
+		echo "3 $branch -> desde jenkinsfile"
+		echo "4 ${branch} -> desde los parametros"
 
 	}
 	stage ("descargando los cambios de la rama") {
-
+		sh "ssh sharepoint@192.168.80.247 ./switch_branch.sh ${branch}"
 	}
 
 
 	stage ('Ejecutando script que borra cache y compila los estilos') {
-		//sh "ssh sharepoint@192.168.80.247 ./scripts_symfony.sh"
+		sh "ssh sharepoint@192.168.80.247 ./scripts_symfony.sh"
 
 	}
 	/*stage ('Ejecutando comando de symfony') {
