@@ -2,10 +2,10 @@
 node {
 	checkout([
 		$class: 'GitSCM', 
-		branches: [[name: '${branch}']], 
+		branches: [[name: '$env.BRANCH_NAME']], 
 		extensions: [[
 			$class: 'LocalBranch', 
-			localBranch: '${branch}'
+			localBranch: '$env.BRANCH_NAME'
 		]], 
 		submoduleCfg: [], 
 		userRemoteConfigs: [[
