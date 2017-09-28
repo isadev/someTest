@@ -36,9 +36,5 @@ node {
 			sh "app/console cache:clear --env=prod"
 			sh "sudo chown -R 'whoami':'whoami' app/cache/ "
 		}
-	}*/
-
-
-	
-	
+	}*/	
 }
