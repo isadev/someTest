@@ -1,0 +1,114 @@
+------------------------------------- INICIO PASOS NECESARIOS PARA EL JENKINS -------------------------------------
+
+Pasos a existir para decirle al jenkins que se conecte a otro servidor y ejecute un conjunto de comandos mencionados a continuacion.
+
+- Debe existir la conexion sin usuario ni contraseña al servidor de los repositorios (CONECTARSE AL SERVIDOR DE LOS REPOS)
+- Debe existir un conjunto de script que seran llamados desde "PARAMETRIZAR LA EJECUCION DE RAMAS" (SCRIPTS DENTRO DEL SERVIDOR DE REPOS)
+- Debe existir una TAREA (JOB) dentro de la interfaz del jenkins que sea parametrizado para la construccion de ramas (PARAMETRIZAR LA EJECUCION DE RAMAS)
+
+------------------------------------- FIN PASOS NECESARIOS PARA EL JENKINS -------------------------------------
+
+
+------------------------------------- INICIO EJEMPLO DE JENKINSFILE -------------------------------------
+PRUEBAS (Jenkinsfile dentro de la rama)
+#!/usr/bin/env groovy
+node {
+	stage ("obteniendo el nombre de la rama") {
+		echo "1 $env.BRANCH_NAME"
+		echo "3 $branch -> desde jenkinsfile"
+		echo "4 ${branch} -> desde los parametros"
+
+	}
+	stage ("descargando los cambios de la rama") {
+		sh "ssh sharepoint@192.168.80.247 ./switch_branch.sh ${branch}"
+	}
+
+
+	stage ('Ejecutando script que borra cache y compila los estilos') {
+		sh "ssh sharepoint@192.168.80.247 ./symfony.sh"
+	}
+}
+
+------------------------------------- FIN EJEMPLO DE JENKINSFILE -------------------------------------
+
+------------------------------------- INICIO CONECTARSE AL SERVIDOR DE LOS REPOS -------------------------------------
+
+En la maquina donde corre el jenkins, el usuario 'jenkins' debe darle al servidor de los repos su clave privada para que pueda conectarse via ssh sin peticon de contraseña
+
+0.- Donde este corriendo el jenkins
+	* sudo su - jenkins
+1.- crear la llave publica en el servidor donde esta jenkins
+    * ssh-keygen -t rsa (no generarle passphrase )
+    * cat ~/.ssh/id_rsa.pub
+2.- crear desde la maquina del jenkins el enlace hacia la maquina que mantendra los datos del repositorio
+	* ssh-copy-id usuario_maquina_repositorio@ip_maquina_repositorio
+
+------------------------------------- FIN CONECTARSE AL SERVIDOR DE LOS REPOS -------------------------------------
+
+---------------------------------- INICIO SCRIPTS DENTRO DEL SERVIDOR DE REPOS ----------------------------------
+
+Ejecutar un script en el docker similar a este que corra los comandos de symfony (sh "ssh sharepoint@192.168.80.247 ./symfony.sh")
+
+docker exec -t localpruebamio_php-apache_1 runuser www-data -c 'app/console assets:install --symlink; app/console cache:clear;app/console cache:clear --env=prod'
+
+-------------------------
+Ejecutar un script que cambie de rama similar al siguiente (sh "ssh sharepoint@192.168.80.247 ./switch_branch.sh ${branch}")
+
+
+echo "|===== Sobre la rama ====="
+echo "|           "$1"          "
+echo "|========================="
+echo ""
+
+echo "|===== Moviendonos a la ubicacion del repo ====="
+cd /home/sharepoint/repos/localPruebaMio/someTest
+echo "|==============================================="
+echo ""
+
+echo "|===== Reseteando la cabecera para descartar los cambios ====="
+git reset --hard HEAD~1
+echo "|==============================================="
+echo ""
+
+echo "|===== Cambiandonos a la rama =================="
+git checkout $1
+echo "|==============================================="
+echo ""
+
+echo "|===== realizando el pull a la rama ============"
+git pull origin $1
+echo "|==============================================="
+echo ""
+
+echo "|===== status de la rama ======================="
+git status
+echo "|==============================================="
+echo ""
+
+Ojo el parametro $1 es el nombre de la rama que se le esta pasando al comando ssh
+
+---------------------------------- FIN SCRIPTS DENTRO DEL SERVIDOR DE REPOS ----------------------------------
+
+------------------------------------- INICIO PARAMETRIZAR LA EJECUCION DE RAMAS -------------------------------------
+
+1.- Crear nueva tarea de proyecto libre
+2.- Seleccionar la opcion dentro de "General"
+	* Esta ejecución debe parametrizarse
+3.- Seleccionar la opcion 'Parametro de texto'
+	* Name = nombre de variable -> branch_to_compile
+	* Default value = rama por defecto -> develop
+	* Description = descripcion de la accion a ejecutar -> esta es una descripcion de la rama
+4.- Bajar hasta la seccion "Configurar el origen del código fuente"
+	* Git y llenar los datos del repositorio
+	* Branches to build -> ${branch_to_compile}
+5.- Guardar
+6.- Ir a la seccion "Ejecutar"
+	* Ejecutar linea de comandos (shell)
+	* Colocar las acciones necesarias (Ej)
+		- echo "on branch $branch_to_compile"
+		- echo "pull branch"
+		- ssh sharepoint@192.168.80.247 ./switch_branch.sh $branch_to_compile
+		- echo "process symfony"
+		- ssh sharepoint@192.168.80.247 ./symfony.sh
+
+------------------------------------- FIN PARAMETRIZAR LA EJECUCION DE RAMAS -------------------------------------
