@@ -49,11 +49,40 @@ En la maquina donde corre el jenkins, el usuario 'jenkins' debe darle al servido
 
 Ejecutar un script en el docker similar a este que corra los comandos de symfony (sh "ssh sharepoint@192.168.80.247 ./symfony.sh")
 
-docker exec -t localpruebamio_php-apache_1 runuser www-data -c 'app/console assets:install --symlink; app/console cache:clear;app/console cache:clear --env=prod'
+echo​ "|==============================================================================="
+echo​ "|​ INICIO​ PROCESOS​ DENTRO​ DE​ SYMFONY" 
+echo​ "|==============================================================================="
+echo​ "" 
 
+app/console​ assets:install​ --symlink;​ app/console​ cache:clear;​ app/console 
+cache:clear​ –env=prod 
+chown​ `whoami`:`whoami`​ app/cache/​ -R 
+ 
+echo​ "|==============================================================================="
+echo​ "|​ FIN​ PROCESOS​ DENTRO​ DE​ SYMFONY" 
+echo​ "|==============================================================================="
+echo​ "" 
+
+
+echo​ "|==============================================================================="
+echo​ "|​ INICIO​ PROCESOS​ DENTRO​ DE​ SYMFONY CON DOCKER " 
+echo​ "|==============================================================================="
+echo​ "" 
+
+docker exec -t hjrivolirambla_php-apache_1 runuser www-data -c 'app/console assets:install --symlink; app/console cache:clear; app/console cache:clear --env=prod'
+docker exec -t hjrivolirambla_php-apache_1 runuser root -c 'chown www-data:www-data app/cache/ -R'
+
+echo​ "|==============================================================================="
+echo​ "|​ FIN​ PROCESOS​ DENTRO​ DE​ SYMFONY CON DOCKER " 
+echo​ "|==============================================================================="
+echo​ "" 
 -------------------------
 Ejecutar un script que cambie de rama similar al siguiente (sh "ssh sharepoint@192.168.80.247 ./switch_branch.sh ${branch}")
 
+echo​ "|==============================================================================="
+echo​ "|​ INICIO​ SINCRONIZACIÓN​ CON​ EL​ REPO​ " 
+echo​ "|==============================================================================="
+echo​ ""
 
 echo "|===== Sobre la rama ====="
 echo "|           "$1"          "
@@ -66,7 +95,8 @@ echo "|==============================================="
 echo ""
 
 echo "|===== Reseteando la cabecera para descartar los cambios ====="
-git reset --hard HEAD~1
+git checkout .
+git reset --hard HEAD
 echo "|==============================================="
 echo ""
 
@@ -84,6 +114,11 @@ echo "|===== status de la rama ======================="
 git status
 echo "|==============================================="
 echo ""
+
+echo​ "|==============================================================================="
+echo​ "|​ FIN​ SINCRONIZACIÓN​ CON​ EL​ REPO​ " 
+echo​ "|==============================================================================="
+echo​ "" 
 
 Ojo el parametro $1 es el nombre de la rama que se le esta pasando al comando ssh
 
@@ -116,3 +151,51 @@ Ojo el parametro $1 es el nombre de la rama que se le esta pasando al comando ss
 
 ------------------------- CONSIDERACIONES PARA LEVANTAR UN DOCKER REMOTO Y ACCEDER A EL --------------------------
 El archivo "docker-compose.yml" comentarle la seccion "networks" y eliminar de existir el "docker-compose-override.yml"
+-------------------------
+
+------------------------- SI SE ENCUENTRA CORRIENDO DENTRO DE UN DOCKER --------------------------
+docker exec -t hjrivolirambla_php-apache_1 runuser www-data -c 'app/console assets:install --symlink; app/console cache:clear; app/console cache:clear --env=prod'
+docker exec -t hjrivolirambla_php-apache_1 runuser root -c 'chown www-data:www-data app/cache/ -R'
+
+------------------------- PARA REALIZAR EL ROLLBACK -------------------------
+echo "|==============================================================================="
+echo "| INICIO SINCRONIZACION CON EL REPO " 
+echo "|==============================================================================="
+echo ""
+
+echo "|===== Sobre la rama ====="
+echo "|           "$1"          "
+echo "|========================="
+echo ""
+
+echo "|===== Moviendonos a la ubicacion del repo ====="
+cd /home/sharepoint/repos/localPruebaMio/someTest
+echo "|==============================================="
+echo ""
+
+echo "|===== Reseteando la cabecera para descartar los cambios ====="
+git checkout .
+git reset --hard HEAD
+echo "|============================================================="
+echo ""
+
+echo "|===== Cambiandonos a la rama master y actualizando los indices =================="
+git checkout master
+git pull origin master & git fetch
+echo "|================================================================================="
+echo ""
+
+echo "|===== realizando el cambio a la rama ============"
+git checkout $1
+echo "|==============================================="
+echo ""
+
+echo "|===== status de la rama ======================="
+git status
+echo "|==============================================="
+echo ""
+
+echo "|==============================================================================="
+echo "| FIN  SINCRONIZACION CON EL REPO " 
+echo "|==============================================================================="
+echo ""
